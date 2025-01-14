@@ -2,9 +2,9 @@
 
 <div align="center">
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/yourusername/ignore-me)](https://goreportcard.com/report/github.com/yourusername/ignore-me)
+[![Go Report Card](https://goreportcard.com/badge/github.com/erdemkosk/ignore-me)](https://goreportcard.com/report/github.com/erdemkosk/ignore-me)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Go Version](https://img.shields.io/github/go-mod/go-version/yourusername/ignore-me)](https://go.dev/)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/erdemkosk/ignore-me)](https://go.dev/)
 
 A smart and beautiful CLI tool that makes `.gitignore` file generation a breeze. Never forget to ignore files again!
 
@@ -28,7 +28,6 @@ A smart and beautiful CLI tool that makes `.gitignore` file generation a breeze.
 
 ## �� Installation
 
-```
 
 ## 🎯 Supported Technologies
 
@@ -81,4 +80,3 @@ A smart and beautiful CLI tool that makes `.gitignore` file generation a breeze.
    - Best practices for your stack
    - Custom rules (if specified)
 
-## 💡 Pro Tips
