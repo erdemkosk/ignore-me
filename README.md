@@ -65,9 +65,8 @@ brew install ignore-me
 </details>
 
 ## 🎬 Quick Start
-<div align="center">
-  <img src="ignore-me.gif" alt="Ignore Me Demo" width="800"/>
-</div>
+
+![IgnoreMe](ignore-me.gif)
 
 ## 🛠 How It Works
 
