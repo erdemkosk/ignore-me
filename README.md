@@ -66,7 +66,7 @@ brew install ignore-me
 
 ## 🎬 Quick Start
 
-![IgnoreMe](ignore-me.gif)
+![IgnoreMe](/ignoreme.gif)
 
 ## 🛠 How It Works
 
