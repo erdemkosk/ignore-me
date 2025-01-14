@@ -28,6 +28,11 @@ A smart and beautiful CLI tool that makes `.gitignore` file generation a breeze.
 
 ## �� Installation
 
+```bash
+brew update
+brew tap erdemkosk/ignore-me
+brew install ignore-me
+```
 
 ## 🎯 Supported Technologies
 
@@ -60,8 +65,9 @@ A smart and beautiful CLI tool that makes `.gitignore` file generation a breeze.
 </details>
 
 ## 🎬 Quick Start
-
-```
+<div align="center">
+  <img src="ignore-me.gif" alt="Ignore Me Demo" width="800"/>
+</div>
 
 ## 🛠 How It Works
 
