@@ -33,6 +33,16 @@ brew update
 brew tap erdemkosk/ignore-me
 brew install ignore-me
 ```
+## Update
+
+```bash
+brew update
+brew upgrade ignore-me
+```
+
+## 🎬 Quick Start
+
+![IgnoreMe](/ignoreme.gif)
 
 ## 🎯 Supported Technologies
 
@@ -64,9 +74,7 @@ brew install ignore-me
 
 </details>
 
-## 🎬 Quick Start
 
-![IgnoreMe](/ignoreme.gif)
 
 ## 🛠 How It Works
 

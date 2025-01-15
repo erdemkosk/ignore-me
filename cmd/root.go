@@ -43,24 +43,15 @@ func showLanguages() {
 		color.Yellow("")
 	}
 
-	// Create prompt items
-	var items []ui.PromptData
-	for _, lang := range config.SupportedLanguages {
-		items = append(items, ui.PromptData{
-			Value:       lang,
-			Suggestions: suggestions,
-		})
-	}
-
 	// Show prompt and get selection
-	prompt := ui.CreateLanguagePrompt(items)
+	prompt := ui.CreateLanguagePrompt(suggestions)
 	index, _, err := prompt.Run()
 	if err != nil {
 		color.Red("❌ Error: %v", err)
 		return
 	}
 
-	selectedLang := items[index].Value
+	selectedLang := config.Languages[index].GitHubName
 
 	// Generate gitignore
 	gen := generator.NewGitignoreGenerator()
@@ -70,5 +61,5 @@ func showLanguages() {
 	}
 
 	successColor := color.New(color.FgGreen, color.Bold)
-	successColor.Printf("\n✨ Success! .gitignore file created for %s!\n\n", selectedLang)
+	successColor.Printf("\n✨ Success! .gitignore file created for %s!\n\n", config.Languages[index].Name)
 }
