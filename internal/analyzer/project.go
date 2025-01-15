@@ -75,28 +75,29 @@ func (pa *ProjectAnalyzer) processFile(path string, info os.FileInfo, err error)
 
 func (pa *ProjectAnalyzer) detectTechnologies() []string {
 	var suggestions []string
+	rootFiles := pa.getRootFiles()
+	rootExtensions := pa.getRootExtensions()
 
 	// Go project detection
-	if pa.fileMap["go.mod"] || pa.fileMap["go.sum"] || pa.extensions[".go"] {
+	if rootFiles["go.mod"] || rootFiles["go.sum"] || rootExtensions[".go"] {
 		suggestions = append(suggestions, "Go")
 	}
 
 	// Python project detection
-	if pa.fileMap["requirements.txt"] || pa.fileMap["setup.py"] ||
-		pa.fileMap["Pipfile"] || pa.extensions[".py"] {
+	if rootFiles["requirements.txt"] || rootFiles["setup.py"] ||
+		rootFiles["Pipfile"] || rootExtensions[".py"] {
 		suggestions = append(suggestions, "Python")
 	}
 
 	// Node.js/JavaScript project detection
-	if pa.fileMap["package.json"] || pa.fileMap["node_modules"] ||
-		pa.extensions[".js"] || pa.extensions[".ts"] {
+	if rootFiles["package.json"] || rootFiles["node_modules"] ||
+		rootExtensions[".js"] || rootExtensions[".ts"] {
 		suggestions = append(suggestions, "Node")
 	}
 
 	// Java project detection
-	if pa.fileMap["pom.xml"] || pa.fileMap["build.gradle"] ||
-		pa.extensions[".java"] || pa.extensions[".class"] ||
-		pa.fileMap[".gradle"] || pa.fileMap["gradlew"] {
+	if rootFiles["pom.xml"] || rootFiles["build.gradle"] ||
+		rootExtensions[".java"] || rootFiles["gradlew"] {
 		suggestions = append(suggestions, "Java")
 	}
 
@@ -186,4 +187,42 @@ func (pa *ProjectAnalyzer) containsInFile(filename, search string) bool {
 		return false
 	}
 	return strings.Contains(string(content), search)
+}
+
+// Sadece kök dizindeki dosyaları kontrol et
+func (pa *ProjectAnalyzer) getRootFiles() map[string]bool {
+	rootFiles := make(map[string]bool)
+	files, err := os.ReadDir(pa.currentDir)
+	if err != nil {
+		return rootFiles
+	}
+
+	for _, file := range files {
+		if !file.IsDir() {
+			rootFiles[file.Name()] = true
+		} else {
+			// Dizin ise direkt dizin adını da ekle
+			rootFiles[file.Name()] = true
+		}
+	}
+	return rootFiles
+}
+
+// Sadece kök dizindeki uzantıları kontrol et
+func (pa *ProjectAnalyzer) getRootExtensions() map[string]bool {
+	rootExts := make(map[string]bool)
+	files, err := os.ReadDir(pa.currentDir)
+	if err != nil {
+		return rootExts
+	}
+
+	for _, file := range files {
+		if !file.IsDir() {
+			ext := strings.ToLower(filepath.Ext(file.Name()))
+			if ext != "" {
+				rootExts[ext] = true
+			}
+		}
+	}
+	return rootExts
 }
